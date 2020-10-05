@@ -1,0 +1,33 @@
+<form #f="ngForm" autocomplete="off" (ngSubmit)="accept(f)">
+  <h3 mat-dialog-title>
+    {{ title }}
+    <mat-divider></mat-divider>
+  </h3>
+  <mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+    <p-text name="code" placeholder="Mã khóa đào tạo" [(ngModel)]="model.def_code" fxFlex [disabled]="disabled">
+    </p-text>
+    <p-text name="name" placeholder="Tên khóa đào tạo" [(ngModel)]="model.name" required fxFlex [disabled]="disabled">
+    </p-text>
+    <div fxFlayout="row" fxLayoutGap="10px">
+      <p-date name="start" [(ngModel)]="model.start" placeholder="Ngày bắt đầu" required fxFlex [disabled]="disabled">
+      </p-date>
+      <p-time name="time-start" [(ngModel)]="model.time_start" placeholder="Giờ bắt đầu" required fxFlex
+        [disabled]="disabled">
+      </p-time>
+    </div>
+    <div fxFlayout="row" fxLayoutGap="10px">
+      <p-date name="end" [(ngModel)]="model.end" placeholder="Ngày kết thúc" required fxFlex [disabled]="disabled">
+      </p-date>
+      <p-time name="time-end" [(ngModel)]="model.time_end" placeholder="Giờ kết thúc" required fxFlex
+        [disabled]="disabled">
+      </p-time>
+    </div>
+    <p-textarea name="desc" placeholder="Mô tả" [(ngModel)]="model.description" [disabled]="disabled">
+    </p-textarea>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-space"></span>
+    <button mat-raised-button mat-dialog-close color="warn">Đóng</button>
+    <button type="submit" mat-raised-button color="primary" *ngIf="!disabled">Lưu</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,66 @@
+<div class="mat-elevation-z8">
+  <mat-toolbar class="header">
+    <span>Thống kê khóa học</span>
+    <span class="flex-space"></span>
+    <button mat-icon-button class="tenjin-icon-button green" (click)="exportexcel()" matTooltip="export excel">
+      <mat-icon svgIcon="excel">excel</mat-icon>
+    </button>
+  </mat-toolbar>
+  <div fxLayout="row" fxLayoutGap="10px" class="report-filter">
+    <p-multiselect [(ngModel)]="model.facutly_codes" [ngModelOptions]="{standalone: true}" placeholder="Khoa" fxFlex
+      [search]="true" label.search="Tìm kiếm khoa" label.empty="không tìm thấy khoa" required>
+      <mat-option *ngFor="let facutly of facutlies" [value]="facutly.id" [attr.text]="facutly.value_to_search">
+        {{ facutly.name }}</mat-option>
+    </p-multiselect>
+    <p-date name="start" [(ngModel)]="model.start" placeholder="Ngày bắt đầu" fxFlex></p-date>
+    <p-date name="end" [(ngModel)]="model.end" placeholder="Ngày kết thúc" fxFlex></p-date>
+    <button mat-raised-button color="primary" (click)="fetch()">Báo cáo</button>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="tenjin-container" #TABLE>
+    <table mat-table [dataSource]="entities" class="tenjin-table" #table>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Tên nhân viên </th>
+        <td mat-cell *matCellDef="let element"> {{value(element, 'employee.name')}} </td>
+      </ng-container>
+      <ng-container matColumnDef="facutly">
+        <th mat-header-cell *matHeaderCellDef> Khoa </th>
+        <td mat-cell *matCellDef="let element"> {{value(element, 'facutly.name')}} </td>
+      </ng-container>
+      <ng-container matColumnDef="major">
+        <th mat-header-cell *matHeaderCellDef>Chuyên môn</th>
+        <td mat-cell *matCellDef="let element"> {{value(element, 'major.name')}} </td>
+      </ng-container>
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef> Mã </th>
+        <td mat-cell *matCellDef="let element"> {{value(element, 'def_code')}} </td>
+      </ng-container>
+      <ng-container matColumnDef="dob">
+        <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+        <td mat-cell *matCellDef="let element">
+          <span>{{value(element, 'employee.date_of_birth') | date: 'dd/MM/yyyy'}}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="start">
+        <th mat-header-cell *matHeaderCellDef> Ngày bắt đầu </th>
+        <td mat-cell *matCellDef="let element">
+          <span>{{value(element, 'start') | date: 'dd/MM/yyyy'}}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef> Ngày kết thúc </th>
+        <td mat-cell *matCellDef="let element">
+          <span>{{value(element, 'end') | date: 'dd/MM/yyyy'}}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="course">
+        <th mat-header-cell *matHeaderCellDef>Khóa đào tạo</th>
+        <td mat-cell *matCellDef="let element">
+          <span>{{value(element, 'course.name')}}</span>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="cols; sticky: true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: cols;"></tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<ng-container p-control>
+    <mat-form-field [fxFlex]="flex">
+        <input type="text" [attr.name]="name" matInput [placeholder]="placeholder" [(ngModel)]="value" [min]="min"
+            [max]="max" [disabled]="disabled" (ngModelChange)="setValue($event)" [mask]="pattern" thousandSeparator="," suffix=" %"
+            [allowNegativeNumbers]="negative" [dropSpecialCharacters]="true" [required]="required"
+            (blur)="blur($event)" />
+        <mat-error *ngIf="errors && errors.required">
+            `{{ placeholder }}` không được để trống
+        </mat-error>
+        <mat-error *ngIf="errors && errors.min">
+            `{{ placeholder }}` phải lớn hơn hoặc bằng {{ min }} %
+        </mat-error>
+        <mat-error *ngIf="errors && errors.max">
+            `{{ placeholder }}` phải nhỏ hơn hoặc bằng {{ max }} %
+        </mat-error>
+    </mat-form-field>
+</ng-container>

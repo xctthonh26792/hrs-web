@@ -1,0 +1,37 @@
+<div class="dashboard-container" fxLayout="column" fxLayoutGap="15px">
+  <div fxLayout="row" fxLayoutGap="15px">
+    <div class="mat-elevation-z8" fxFlex>
+      <mat-toolbar class="header dashboard-header">
+        <span>Thống kê hệ thống</span>
+        <span class="flex-space"></span>
+      </mat-toolbar>
+      <div fxLayout="column" fxLayoutGap="10px" class="padding-15">
+        <div fxLayout="row" fxLayoutGap="15px">
+          <div class="statistic-box success" fxFlex>
+            <div class="count">{{ data.total_employee }}</div>
+            <div class="name">Tổng số nhân viên</div>
+          </div>
+          <div class="statistic-box pending" fxFlex>
+            <div class="count">{{ data.total_student }}</div>
+            <div class="name">Tổng số sinh viên</div>
+          </div>
+
+        </div>
+        <div fxLayout="row" fxLayoutGap="15px">
+          <div class="statistic-box pending-to-approve" fxFlex>
+            <div class="count">{{ data.total_course }}</div>
+            <div class="name">Tổng số khóa học trong tháng</div>
+          </div>
+          <div class="statistic-box reject" fxFlex>
+            <div class="count">{{ data.total_intership }}</div>
+            <div class="name">Tổng số sinh viên thực tập trong tháng</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,35 @@
+<form #f="ngForm" autocomplete="off" (ngSubmit)="accept(f)">
+  <h3 mat-dialog-title>
+    {{ title }}
+    <mat-divider></mat-divider>
+  </h3>
+  <mat-dialog-content fxLayout="column">
+    <p-text name="code" [(ngModel)]="model.def_code" [disabled]="disabled" placeholder="Mã" fxFlex></p-text>
+    <p-select [(ngModel)]="model.facutly_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Khoa" fxFlex [search]="true" label.search="Tìm kiếm khoa" label.empty="không tìm thấy khoa" required>
+      <mat-option *ngFor="let facutly of facutlies" [value]="facutly.id" [attr.text]="facutly.value_to_search">
+        {{ facutly.name }}</mat-option>
+    </p-select>
+    <p-select [(ngModel)]="model.student_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Sinh viên" fxFlex [search]="true" label.search="Tìm kiếm sinh viên"
+      label.empty="không tìm thấy sinh viên" required (ngModelChange)="studentChange($event)">
+      <mat-option *ngFor="let student of students" [value]="student.id" [attr.text]="student.value_to_search">
+        {{ student.name }}
+        ({{ student.course }})
+        ({{ student.class }})
+        ({{ student.date_of_birth | date:'dd/MM/yyyy' }})
+      </mat-option>
+    </p-select>
+    <p-date name="start" placeholder="Ngày bắt đầu (DD/MM/YYYY)" [(ngModel)]="model.start" [disabled]="disabled" fxFlex>
+    </p-date>
+    <p-date name="end" placeholder="Ngày kết thúc (DD/MM/YYYY)" [(ngModel)]="model.end" [disabled]="disabled" fxFlex>
+    </p-date>
+    <p-textarea name="desc" placeholder="Mô tả" [(ngModel)]="model.description" [disabled]="disabled" fxFlex>
+    </p-textarea>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-space"></span>
+    <button mat-raised-button mat-dialog-close color="warn">Đóng</button>
+    <button type="submit" mat-raised-button color="primary">Lưu</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,5 @@
+export enum AUTH_ROLE {
+  ADMINISTRATOR = 1,
+  STAFF = 2,
+  SYSTEM = 2147483647
+}

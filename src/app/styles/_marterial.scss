@@ -1,0 +1,58 @@
+.mat-form-field {
+  // margin-top: 0.5em;
+  // margin-bottom: 0.5em;
+}
+.mat-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  &table,
+  th,
+  td {
+    border: 1px solid #ddd;
+  }
+  .mat-header-cell {
+    font-size: 0.9em;
+    color: #fff;
+    font-weight: 700;
+    background: #3f8cca;
+    vertical-align: middle;
+    .mat-sort-header-arrow {
+      color: #fff;
+    }
+  }
+  .mat-header-cell,
+  .mat-cell {
+    padding-left: 1.5em !important;
+    padding-right: 1.5em !important;
+  }
+  tr {
+    &.header-filters {
+      th,
+      td {
+        border: 1px solid #bfbfbf;
+        text-align: center;
+      }
+      .mat-header-cell {
+        padding-left: 0.5em !important;
+        padding-right: 0.5em !important;
+        background-color: #ddd;
+        .mat-form-field {
+          width: 100%;
+          .mat-form-field-wrapper {
+            width: 100%;
+            margin-bottom: -1.25em;
+            color: #353535;
+          }
+          .mat-form-field-label {
+            color: #353535;
+          }
+        }
+        button {
+          line-height: 2em;
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
+}

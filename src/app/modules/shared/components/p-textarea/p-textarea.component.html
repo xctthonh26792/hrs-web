@@ -1,0 +1,10 @@
+<ng-container p-control>
+    <mat-form-field [fxFlex]="flex">
+        <textarea type="text" [attr.name]="name" matInput [placeholder]="placeholder" [(ngModel)]="value"
+            [disabled]="disabled" (ngModelChange)="setValue($event)" [attr.rows]="rows" [style.resize]="resize"
+            [required]="required" (blur)="blur($event)"></textarea>
+        <mat-error *ngIf="control && control.errorState">
+            `{{ placeholder }}` không được để trống
+        </mat-error>
+    </mat-form-field>
+</ng-container>

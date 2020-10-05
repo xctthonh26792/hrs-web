@@ -1,0 +1,17 @@
+<div class="login-component">
+  <form autocomplete="off">
+    <mat-card class="login-card">
+      <mat-card-content fxLayout="column">
+        <mat-form-field>
+          <input type="text" name="login-username" matInput placeholder="Tên đăng nhập" [(ngModel)]="username" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" name="login-password" matInput placeholder="Mật khẩu" [(ngModel)]="password" />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions fxLayout="column">
+        <button type="submit" mat-raised-button color="primary" (click)="login()">Đăng nhập</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

@@ -1,0 +1,40 @@
+<form #f="ngForm" autocomplete="off" (ngSubmit)="accept(f)">
+  <h3 mat-dialog-title>
+    {{ title }}
+    <mat-divider></mat-divider>
+  </h3>
+  <mat-dialog-content fxLayout="column">
+    <p-text name="code" [(ngModel)]="model.def_code" [disabled]="disabled" placeholder="Mã" fxFlex></p-text>
+    <p-select [(ngModel)]="model.employee_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Nhân viên" fxFlex [search]="true" label.search="Tìm kiếm nhân viên"
+      (ngModelChange)="employeeChange($event)" label.empty="không tìm thấy nhân viên" required>
+      <mat-option *ngFor="let employee of employees" [value]="employee.id" [attr.text]="employee.value_to_search">
+        {{ employee.name }}</mat-option>
+    </p-select>
+    <p-select [(ngModel)]="model.course_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Khóa đào tạo" fxFlex [search]="true" label.search="Tìm kiếm khóa đào tạo"
+      label.empty="không tìm thấy khóa đào tạo" required (ngModelChange)="courseChange($event)">
+      <mat-option *ngFor="let course of courses" [value]="course.id" [attr.text]="course.value_to_search">
+        {{ course.name }}</mat-option>
+    </p-select>
+    <div fxFlayout="row" fxLayoutGap="10px">
+      <p-date name="start" [(ngModel)]="model.start" placeholder="Ngày bắt đầu" fxFlex [disabled]="true">
+      </p-date>
+      <p-time name="time-start" [(ngModel)]="model.time_start" placeholder="Giờ bắt đầu" fxFlex [disabled]="true">
+      </p-time>
+    </div>
+    <div fxFlayout="row" fxLayoutGap="10px">
+      <p-date name="end" [(ngModel)]="model.end" placeholder="Ngày kết thúc" fxFlex [disabled]="true">
+      </p-date>
+      <p-time name="time-end" [(ngModel)]="model.time_end" placeholder="Giờ kết thúc" fxFlex [disabled]="true">
+      </p-time>
+    </div>
+    <p-textarea name="desc" placeholder="Mô tả" [(ngModel)]="model.description" [disabled]="disabled" fxFlex>
+    </p-textarea>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-space"></span>
+    <button mat-raised-button mat-dialog-close color="warn">Đóng</button>
+    <button type="submit" mat-raised-button color="primary">Lưu</button>
+  </mat-dialog-actions>
+</form>

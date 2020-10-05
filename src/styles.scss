@@ -1,1 +1,281 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "./app/styles/marterial";
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 13px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 5px;
+}
+
+article,
+aside,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+}
+
+ul,
+ol {
+  padding-inline-start: 2em;
+}
+
+.mat-snack-bar-container {
+  &.success {
+    background-color: #28a745;
+  }
+  &.info {
+    background-color: #17a2b8;
+  }
+  &.warning {
+    background-color: #ffc107;
+  }
+  &.error {
+    background-color: #dc3545;
+  }
+}
+
+.flex-space {
+  flex: 1;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.fetching-indicator-container {
+  height: 5px;
+}
+
+.mat-label {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 85%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+  &.mat-label-info {
+    background-color: #17a2b8;
+  }
+  &.mat-label-success {
+    background-color: #28a745;
+  }
+  &.mat-label-error {
+    background-color: #dc3545;
+  }
+  &.mat-label-warning {
+    background-color: #ffc107;
+  }
+  &.mat-label-basic {
+    background-color: #ff7867;
+  }
+  &.mat-label-medium {
+    background-color: #ffb35f;
+  }
+  &.mat-label-quite {
+    background-color: #9adce7;
+  }
+  &.mat-label-proficient {
+    background-color: #60a1e5;
+  }
+  &.mat-label-expert {
+    background-color: #5cb642;
+  }
+}
+
+.tenjin-container {
+  overflow: auto;
+  max-height: calc(100vh - 260px);
+}
+
+.tenjin-icon-button {
+  &.red {
+    color: #dc3545;
+  }
+  &.green {
+    color: #28a745;
+  }
+  &.blue {
+    color: #17a2b8;
+  }
+  &.orange {
+    color: #ffc107;
+  }
+  &.purple {
+    color: #8b008b;
+  }
+}
+// Xcontent
+.mat-tab-label .mat-tab-label-content {
+  font-weight: 700;
+}
+.selector-btn {
+  button {
+    margin: 0 4px;
+  }
+}
+.heading-x {
+  margin: 5px 0 0 !important;
+}
+.mat-icon-button .mat-icon,
+.mat-icon-button i {
+  margin-top: -4px;
+}
+.mat-label {
+  padding: 6px 4px;
+  min-width: 50px;
+}
+.mat-select-disabled .mat-select-value,
+.mat-input-element:disabled {
+  color: #000;
+  // background: #ddd;
+}
+.mat-list-item-content {
+  cursor: pointer;
+  &:hover,
+  &.active,
+  &:focus {
+    background: #192b3d;
+  }
+}
+.m-x-5 {
+  margin: 0 5px !important;
+}
+.mat-cell,
+.mat-footer-cell {
+  font-size: 12px;
+}
+
+app-home {
+  .mat-expansion-panel-header-description,
+  .mat-panel-title,
+  .mat-expansion-indicator::after {
+    color: white;
+  }
+}
+
+.table-all {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  table,
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 3px 6px;
+  }
+  table {
+    border-collapse: collapse;
+    tr {
+      &:first-child {
+        td {
+          border-top: none;
+        }
+      }
+    }
+    th {
+      background: #3f8cca;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+      &:first-child {
+        text-align: left;
+      }
+    }
+    td {
+      &:first-child {
+        border: none;
+        border-top: solid 1px #ddd;
+        .mat-form-field-infix {
+          width: 180px;
+          background: #fff !important;
+        }
+      }
+    }
+  }
+}
+.student-panel {
+  padding: 6px 4px;
+  min-width: 50px;
+  display: inline-block;
+  font-size: 85%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+  &.course {
+    background-color: green;
+    width: 70px;
+  }
+  &.date {
+    background-color: blue;
+    width: 70px;
+  }
+  &.class {
+    background-color: red;
+    width: 70px;
+  }
+}

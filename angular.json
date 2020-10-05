@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tenjin-course": {
+    "hrms-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tenjin-course",
+            "outputPath": "dist/hrms-web",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,12 +25,26 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets-2.5/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "node_modules/summernote/dist/summernote-lite.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/summernote/dist/summernote-lite.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -56,8 +70,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "15kb",
+                  "maximumError": "20kb"
                 }
               ]
             }
@@ -66,18 +80,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tenjin-course:build"
+            "browserTarget": "hrms-web:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tenjin-course:build:production"
+              "browserTarget": "hrms-web:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tenjin-course:build"
+            "browserTarget": "hrms-web:build"
           }
         },
         "test": {
@@ -92,9 +106,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/summernote/dist/summernote-lite.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/summernote/dist/summernote-lite.min.js"
+            ]
           }
         },
         "lint": {
@@ -114,15 +132,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "tenjin-course:serve"
+            "devServerTarget": "hrms-web:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "tenjin-course:serve:production"
+              "devServerTarget": "hrms-web:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "tenjin-course"
+    }
+  },
+  "defaultProject": "hrms-web",
+  "cli": {
+    "analytics": "0c2d49fd-b2c7-4332-ab01-592dfcad940e"
+  }
 }

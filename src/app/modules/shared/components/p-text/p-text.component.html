@@ -1,0 +1,13 @@
+<ng-container p-control>
+    <mat-form-field [fxFlex]="flex">
+        <input type="text" [attr.name]="name" matInput [placeholder]="placeholder" [(ngModel)]="value"
+            [minlength]="minlength" [maxlength]="maxlength" [disabled]="disabled" (ngModelChange)="setValue($event)"
+            [required]="required" (blur)="blur($event)" />
+        <mat-error *ngIf="errors && errors.required">
+            `{{ placeholder }}` không được để trống
+        </mat-error>
+        <mat-error *ngIf="errors && errors.minlength">
+            `{{ placeholder }}` không được ngắn hơn {{ minlength }} ký tự
+        </mat-error>
+    </mat-form-field>
+</ng-container>

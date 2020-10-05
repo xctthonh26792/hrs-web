@@ -1,0 +1,12 @@
+<ng-container p-control>
+    <mat-form-field [fxFlex]="flex">
+        <input type="text" [matDatepicker]="picker" [attr.name]="name" matInput [placeholder]="placeholder"
+            [(ngModel)]="value" [disabled]="disabled" (ngModelChange)="setValue($event)" [required]="required">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year" (monthSelected)="handle($event, picker)">
+        </mat-datepicker>
+        <mat-error *ngIf="control && control.errorState">
+            `{{ placeholder }}` không được để trống
+        </mat-error>
+    </mat-form-field>
+</ng-container>

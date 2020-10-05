@@ -1,0 +1,17 @@
+<ng-container p-control>
+  <mat-form-field [fxFlex]="flex">
+    <mat-select [attr.name]="name" [placeholder]="placeholder" [disabled]="disabled" required [(ngModel)]="value"
+      [ngModelOptions]="{standalone: true}" [required]="required" (ngModelChange)="change($event)" multiple>
+      <mat-option *ngIf="search">
+        <ngx-mat-select-search ngModel (ngModelChange)="filter($event)" [placeholderLabel]="label_search"
+          [noEntriesFoundLabel]="label_empty"></ngx-mat-select-search>
+      </mat-option>
+      <mat-option *ngFor="let model of models" [value]="model.value">
+        <div class="p-option-label" [innerHtml]="model.html"></div>
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="control && control.errorState">
+      `{{ placeholder }}` không được để trống
+    </mat-error>
+  </mat-form-field>
+</ng-container>

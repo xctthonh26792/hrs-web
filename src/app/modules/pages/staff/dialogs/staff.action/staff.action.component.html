@@ -1,0 +1,38 @@
+<form #f="ngForm" autocomplete="off" (ngSubmit)="accept(f)">
+  <h3 mat-dialog-title>
+    {{ title }}
+    <mat-divider></mat-divider>
+  </h3>
+  <mat-dialog-content fxLayout="column">
+    <p-text name="code" [(ngModel)]="model.def_code" [disabled]="disabled" placeholder="Mã" fxFlex></p-text>
+    <p-text name="employee-name" placeholder="Tên nhân viên" [(ngModel)]="model.name" [disabled]="disabled" required
+      fxFlex></p-text>
+    <p-date name="employee-dob" placeholder="Ngày sinh (DD/MM/YYYY)" [(ngModel)]="model.date_of_birth"
+      [disabled]="disabled" fxFlex></p-date>
+    <p-email name="employee-email" placeholder="Email" [(ngModel)]="model.email" [disabled]="disabled" fxFlex></p-email>
+    <p-text name="employee-phone" placeholder="Số điện thoại" [(ngModel)]="model.phone" [disabled]="disabled" fxFlex>
+    </p-text>
+    <p-select [(ngModel)]="model.facutly_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Khoa" fxFlex [search]="true" label.search="Tìm kiếm khoa" label.empty="không tìm thấy khoa" required>
+      <mat-option *ngFor="let facutly of facutlies" [value]="facutly.id" [attr.text]="facutly.value_to_search">
+        {{ facutly.name }}</mat-option>
+    </p-select>
+    <p-select [(ngModel)]="model.major_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Chuyên môn" fxFlex [search]="true" label.search="Tìm kiếm chuyên môn"
+      label.empty="không tìm thấy chuyên môn" required>
+      <mat-option *ngFor="let major of majors" [value]="major.id" [attr.text]="major.value_to_search">
+        {{ major.name }}</mat-option>
+    </p-select>
+    <p-select [(ngModel)]="model.level_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Trình độ" fxFlex [search]="true" label.search="Tìm kiếm trình độ"
+      label.empty="không tìm thấy trình độ" required>
+      <mat-option *ngFor="let level of levels" [value]="level.id" [attr.text]="level.value_to_search">
+        {{ level.name }}</mat-option>
+    </p-select>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-space"></span>
+    <button mat-raised-button mat-dialog-close color="warn">Đóng</button>
+    <button type="submit" mat-raised-button color="primary">Lưu</button>
+  </mat-dialog-actions>
+</form>

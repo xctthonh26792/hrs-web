@@ -1,0 +1,69 @@
+<mat-drawer-container class="main-drawer-container" hasBackdrop="true">
+  <mat-drawer #drawer mode="over" class="sidenav">
+    <div class="sidenav-container">
+      <div class="sidenav-logo">
+        <br><br>
+      </div>
+      <div class="sidenav-navigation">
+        <mat-nav-list>
+          <span *ngFor="let item of routes" [hidden]="!isInRole(item.permissions)">
+            <span *ngIf="item.links && item.links.length > 0">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                      <mat-icon *ngIf="!item.svg">{{item.icon}}</mat-icon>
+                      <mat-icon svgIcon="{{ item.icon }}" *ngIf="item.svg">{{item.icon}}</mat-icon>
+                      <span class="nav-name">{{item.name}}</span>
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <span *ngFor="let child of item.links">
+                  <mat-list-item (click)="navigate(child.link)">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                      <mat-icon svgIcon="{{ child.icon }}" *ngIf="child.svg">{{child.icon}}</mat-icon>
+                      <mat-icon *ngIf="!child.svg">{{child.icon}}</mat-icon>
+                      <span class="nav-name">{{child.name}}</span>
+                    </div>
+                  </mat-list-item>
+                </span>
+              </mat-expansion-panel>
+            </span>
+            <span *ngIf="!item.links || item.links.length === 0">
+              <mat-list-item (click)="navigate(item.link)">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <mat-icon *ngIf="!item.svg">{{item.icon}}</mat-icon>
+                  <mat-icon svgIcon="{{ item.icon }}" *ngIf="item.svg">{{item.icon}}</mat-icon>
+                  <span class="nav-name">{{item.name}}</span>
+                </div>
+              </mat-list-item>
+            </span>
+          </span>
+        </mat-nav-list>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar class="header">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="menu">menu</mat-icon>
+      </button>
+      <span [fxHide.xs]="true">Course</span>
+      <span class="flex-space"></span>
+      <button mat-button [matMenuTriggerFor]="appMenu">
+        <mat-icon aria-label="account_circle">account_circle</mat-icon>
+        {{ name }}
+        <mat-icon aria-label="arrow_drop_down" class="small">arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="profile()">Thông tin cá nhân</button>
+        <button mat-menu-item (click)="password()">Đổi mật khẩu</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">Đăng xuất</button>
+      </mat-menu>
+    </mat-toolbar>
+    <section class="main-container" fxFlexFill>
+      <router-outlet></router-outlet>
+    </section>
+  </mat-drawer-content>
+</mat-drawer-container>

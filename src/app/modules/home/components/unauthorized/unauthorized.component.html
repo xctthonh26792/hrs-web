@@ -1,0 +1,41 @@
+<div class="unauthorized-component">
+    <div class="unauthorized-container">
+        <div class="cloudWrapper">
+            <div class="cloud cloud-1">
+                <img src="assets/img/cloud-1.png" alt="">
+            </div>
+            <div class="cloud cloud-2">
+                <img src="assets/img/cloud-2.png" alt="">
+            </div>
+            <div class="cloud cloud-3">
+                <img src="assets/img/cloud-3.png" alt="">
+            </div>
+            <div class="cloud cloud-4">
+                <img src="assets/img/cloud-4.png" alt="">
+            </div>
+        </div>
+
+        <div class="unauthorized-wrap">
+            <div class="scene-unauth"></div>
+            <div class="row-flex">
+                <div class="messge-unathorized">
+                    <h1>
+                        <br> Unauthorized
+                    </h1>
+                    <p>You don't have permission to access this page !</p>
+                    <a mat-raised-button [routerLink]="['/']" *ngIf="isAuth()">Quay về trang chủ</a>
+                    <a mat-raised-button [routerLink]="['/login']" *ngIf="!isAuth()">Đăng nhập</a>
+                </div>
+            </div>
+            <div class="charecter-6">
+                <img src="assets/img/charecter-6.png" alt="">
+                <span class="eye-6">
+                    <img src="assets/img/eye-6.gif" alt="">
+                </span>
+                <span class="hand-6">
+                    <img src="assets/img/hand-6.png" alt="">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

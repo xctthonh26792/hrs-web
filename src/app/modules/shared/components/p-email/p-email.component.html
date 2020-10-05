@@ -1,0 +1,13 @@
+<ng-container p-control>
+    <mat-form-field [fxFlex]="flex">
+        <input type="email" [attr.name]="name" matInput [placeholder]="placeholder" [(ngModel)]="value"
+            [disabled]="disabled" (ngModelChange)="setValue($event)" [required]="required" (blur)="blur($event)"
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" email="true" />
+        <mat-error *ngIf="errors && errors.required">
+            `{{ placeholder }}` không được để trống
+        </mat-error>
+        <mat-error *ngIf="errors && (errors.email || errors.pattern)">
+            `{{ placeholder }}` không đúng định dạng
+        </mat-error>
+    </mat-form-field>
+</ng-container>

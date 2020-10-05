@@ -1,0 +1,12 @@
+<ng-container p-control>
+    <mat-form-field [fxFlex]="flex">
+        <input type="text" matInput [attr.name]="name" [placeholder]="placeholder" [(ngModel)]="value"
+            [disabled]="disabled" [required]="required" (blur)="blur($event)" />
+        <button mat-icon-button matSuffix (click)="open($event)">
+            <mat-icon>access_time</mat-icon>
+        </button>
+        <mat-error *ngIf="control && control.errorState">
+            `{{ placeholder }}` không được để trống
+        </mat-error>
+    </mat-form-field>
+</ng-container>

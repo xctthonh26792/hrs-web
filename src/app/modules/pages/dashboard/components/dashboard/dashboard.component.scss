@@ -1,0 +1,155 @@
+.dashboard-container {
+  .dashboard-header {
+    height: 24px;
+    font: 500 14px Roboto, "Helvetica Neue", sans-serif;
+    .mat-icon-button {
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      mat-icon {
+        font-size: 16px;
+        line-height: 16px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+  .statistic-box {
+    height: 100px;
+    position: relative;
+    padding: 10px;
+    &.red {
+      background-color: #e24242;
+    }
+    &.green {
+      background-color: #318c31;
+    }
+    &.blue {
+      background-color: #4141a9;
+    }
+    &.orange {
+      background-color: #fba911;
+    }
+    &.aqua {
+      background-color: #05a5a5;
+    }
+    &.light-green {
+      background-color: lightgreen;
+    }
+    &.pink {
+      background-color: lightpink;
+    }
+    &.purple {
+      background-color: purple;
+    }
+    &.light-blue {
+      background-color: lightblue;
+    }
+    &.warm-red {
+      background-color: #f63a08;
+    }
+    &.success {
+      background-color: #5cb642;
+    }
+    &.pending {
+      background-color: #abe79a;
+    }
+    &.pending-to-approve {
+      background-color: #ffb35f;
+    }
+    &.reject {
+      background-color: #ff7867;
+    }
+    &.my-pending {
+      background-color: #9adce7;
+    }
+    &.my-pending-to-approve {
+      background-color: #60a1e5;
+    }
+
+    .count {
+      color: #fff;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .name {
+      color: #fff;
+      font-size: 14px;
+      bottom: 10px;
+      position: absolute;
+      font-weight: 500;
+    }
+  }
+}
+
+.mat-grid-tile {
+  background: lightblue;
+  margin-left: 10px;
+  padding-top: 10px;
+  border-radius: 10px;
+  .node-content {
+    padding: 5px;
+  }
+}
+.cus-name {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 0 0 10px;
+}
+
+.customer-count {
+  font-size: 20px;
+  font-weight: 800;
+  padding-left: 130px;
+}
+.grid-list {
+  padding-top: 10px;
+}
+
+.unit-text {
+  padding: 20px 0 0 30px;
+}
+
+.project-task {
+  padding: 15px 0 0 20px;
+  font-size: 14px;
+}
+
+li {
+  border-bottom: 1px solid #f5f5f5;
+  width: 100%;
+  display: block;
+  font-weight: 500;
+  padding: 5px;
+  box-sizing: border-box;
+  line-height: 25px;
+  cursor: pointer;
+  color: #23638e;
+}
+.view-more {
+  float: right;
+  padding: 10px 10px 0 0;
+  font-size: 14px;
+  color: #2b29bb;
+}
+.btn {
+  color: white;
+  &.green {
+    background-color: green;
+  }
+  &.blue {
+    background-color: #60a1e5;
+  }
+}
+.padding-15 {
+  padding: 15px;
+}
+
+.padding-10-20 {
+  padding: 10px 20px;
+}
+
+.revenue-icon {
+  font-size: 13px;
+  color: #dcc207;
+}

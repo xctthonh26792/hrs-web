@@ -1,0 +1,6 @@
+<ng-container>
+  <div fxFlex="flex">
+    <textarea [(ngModel)]="value" [ngxSummernote]="config" [ngxSummernoteDisabled]="disabled" name="name"
+      (ngModelChange)="change($event)"></textarea>
+  </div>
+</ng-container>
