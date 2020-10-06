@@ -7,6 +7,7 @@ import { EmployeeCourseActionComponent } from './employee-course.action/employee
 import { StaffUploadComponent } from './staff.upload/staff.upload.component'
 import { StudentUploadComponent } from './student.upload/student.upload.component'
 import { IntershipUploadComponent } from './intership.upload/intership.upload.component'
+import { EmployeeCourseUploadComponent } from './employee-course.upload/employee-course.upload.component'
 
 export { StaffActionComponent } from './staff.action/staff.action.component';
 export { StaffCreateUserComponent } from './staff.create.user/staff.create.user.component';
@@ -17,6 +18,7 @@ export { EmployeeCourseActionComponent } from './employee-course.action/employee
 export { StaffUploadComponent } from './staff.upload/staff.upload.component'
 export { StudentUploadComponent } from './student.upload/student.upload.component'
 export { IntershipUploadComponent } from './intership.upload/intership.upload.component'
+export { EmployeeCourseUploadComponent } from './employee-course.upload/employee-course.upload.component'
 
 export const DIALOGS = [
   StaffActionComponent,
@@ -27,5 +29,6 @@ export const DIALOGS = [
   EmployeeCourseActionComponent,
   StaffUploadComponent,
   StudentUploadComponent,
-  IntershipUploadComponent
+  IntershipUploadComponent,
+  EmployeeCourseUploadComponent
 ];

@@ -1,0 +1,38 @@
+<form #f="ngForm" autocomplete="off" (ngSubmit)="accept(f)">
+  <h3 mat-dialog-title>
+    Tải tệp tin khóa học lên hệ thống
+    <mat-divider></mat-divider>
+  </h3>
+  <mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+    <span>Tải file mẫu <a href="{{url}}">tại đây</a> </span>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" fxFlex />
+    <div fxFlex *ngIf="exception" fxLayoutGap="10px">
+      <div class="table-all table-error" fxFlex>
+        <table style="width: 100%;">
+          <thead>
+            <th>Dòng lỗi</th>
+            <th>Lỗi</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let error of errors">
+              <td>{{error.index}}</td>
+              <td>
+                <ul *ngFor="let value of error.errors">
+                  <li>
+                    {{ value }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-space"></span>
+    <button type="button" mat-raised-button mat-dialog-close color="warn" (click)="cancel()">Đóng</button>
+    <button type="submit" mat-raised-button color="primary">Lưu</button>
+  </mat-dialog-actions>
+</form>

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SeoService, ModalService, ToastrService } from '../../../../../services';
 import { EmployeeCourseApi } from '../../apis';
 import { BaseTableComponent } from '../../../../shared/base-table.component';
-import { EmployeeCourseActionComponent } from '../../dialogs';
+import { EmployeeCourseActionComponent, EmployeeCourseUploadComponent } from '../../dialogs';
 import * as _ from 'lodash';
 
 @Component({
@@ -20,7 +20,26 @@ export class EmployeeCourseComponent extends BaseTableComponent {
   data: any
 
   init() {
-    this.cols = ['code', 'name', 'dob', 'course', 'start', 'end', 'action']
+    this.cols = ['code', 'name', 'facutly', 'dob', 'major', 'course', 'start', 'end', 'action']
+  }
+
+  async upload() {
+    if (this._lock) {
+      return
+    }
+    this._lock = true;
+    var instance = await this.modal.show(EmployeeCourseUploadComponent, {
+      message: {
+        success: 'Tải lên file thông tin khóa học thành công',
+        error: 'Tải lên file thông tin khóa học không thành công'
+      },
+    }, { width: '1024px' })
+    instance.subscribe((reload) => {
+      if (reload) {
+        this.refresh();
+      }
+      this._lock = false;
+    })
   }
 
 
