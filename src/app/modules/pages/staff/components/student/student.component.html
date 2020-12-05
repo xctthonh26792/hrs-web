@@ -1,6 +1,6 @@
 <div class="mat-elevation-z8">
   <mat-toolbar class="header">
-    <span>Danh sách sinh viên</span>
+    <span>Danh sách học viên</span>
     <span class="flex-space"></span>
     <button mat-icon-button class="tenjin-icon-button green" (click)="refresh()" matTooltip="Làm mới dữ liệu"
       *ngIf="auth.permission() === 1 || auth.permission() === 2147483647">
@@ -18,7 +18,7 @@
   <div class="tenjin-container">
     <table mat-table [dataSource]="models" class="tenjin-table" matSort>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên sinh viên </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên học viên </th>
         <td mat-cell *matCellDef="let element"> {{value(element, 'name')}} </td>
       </ng-container>
       <ng-container matColumnDef="code">
@@ -46,7 +46,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="center">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Trường </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Đơn vị </th>
         <td mat-cell *matCellDef="let element">
           <span>{{value(element, 'center.name')}}</span>
         </td>

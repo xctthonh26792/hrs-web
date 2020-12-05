@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   init() {
-    this.seo.init('Course');
+    this.seo.init('Quản lý đào tạo');
     if (this.auth.isAuth()) {
       this._loading = true;
       this.auth.renew().then(() => {
@@ -35,13 +35,13 @@ export class AppComponent {
   }
 
   registrationIcon() {
-    this.matIconRegistry.addSvgIcon('education', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/education.svg"))
-    this.matIconRegistry.addSvgIcon('level', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/level.svg"))
-    this.matIconRegistry.addSvgIcon('graduated', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/graduated.svg"))
-    this.matIconRegistry.addSvgIcon('center', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/center.svg"))
-    this.matIconRegistry.addSvgIcon('clipboard', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/clipboard.svg"))
-    this.matIconRegistry.addSvgIcon('course', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/course.svg"))
-    this.matIconRegistry.addSvgIcon('excel', this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/icons/excel.svg"))
+    this.matIconRegistry.addSvgIcon('education', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/education.svg"))
+    this.matIconRegistry.addSvgIcon('level', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/level.svg"))
+    this.matIconRegistry.addSvgIcon('graduated', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/graduated.svg"))
+    this.matIconRegistry.addSvgIcon('center', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/center.svg"))
+    this.matIconRegistry.addSvgIcon('clipboard', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/clipboard.svg"))
+    this.matIconRegistry.addSvgIcon('course', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/course.svg"))
+    this.matIconRegistry.addSvgIcon('excel', this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/icons/excel.svg"))
   }
 
 }

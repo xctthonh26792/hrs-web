@@ -1,11 +1,13 @@
 <form #f="ngForm" autocomplete="off" (ngSubmit)="accept(f)">
   <h3 mat-dialog-title>
-    Tải tệp tin sinh viên lên hệ thống
+    Tải tệp tin học viên lên hệ thống
     <mat-divider></mat-divider>
   </h3>
   <mat-dialog-content fxLayout="column" fxLayoutGap="10px">
     <span>Tải file mẫu <a href="{{url}}">tại đây</a> </span>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" fxFlex />
+    <div>
+      <input type="file" name="file" ng2FileSelect [uploader]="uploader" fxFlex />
+    </div>
     <div fxFlex *ngIf="exception" fxLayoutGap="10px">
       <div class="table-all table-error" fxFlex>
         <table style="width: 100%;">

@@ -11,7 +11,6 @@ import { COMPONENTS } from './components';
 import { RESOLVERS } from './resolvers';
 
 import { routes } from './report.routing';
-import { CourseReportByFacutlyComponent } from './components/course-report-by-facutly/course-report-by-facutly.component';
 
 @NgModule({
   imports: [
@@ -24,7 +23,7 @@ import { CourseReportByFacutlyComponent } from './components/course-report-by-fa
   ],
   providers: [...RESOLVERS],
   exports: [RouterModule],
-  declarations: [...COMPONENTS, CourseReportByFacutlyComponent],
+  declarations: [...COMPONENTS],
   entryComponents: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

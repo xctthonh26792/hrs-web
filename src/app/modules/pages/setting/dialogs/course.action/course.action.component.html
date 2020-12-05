@@ -22,6 +22,8 @@
         [disabled]="disabled">
       </p-time>
     </div>
+    <p-number name="course-time" [(ngModel)]="model.course_time" placeholder="Tổng số giờ" required fxFlex separator="2"
+      [disabled]="disabled"></p-number>
     <p-textarea name="desc" placeholder="Mô tả" [(ngModel)]="model.description" [disabled]="disabled">
     </p-textarea>
   </mat-dialog-content>

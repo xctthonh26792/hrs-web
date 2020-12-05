@@ -9,7 +9,11 @@ export class CourseResolve implements Resolve<Object> {
   constructor(private router: Router, private api: CourseApi, private auth: AuthService, private storage: StorageService) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const quantity = this.storage.resolve(state.url) || 10;
-    return this.api.fetch(1, quantity);
+    return this.api.post(`all-course`, {
+      page: 1,
+      quantity: quantity,
+      query: ''
+    });
   }
 }
 

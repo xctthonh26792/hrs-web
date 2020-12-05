@@ -18,12 +18,13 @@ export class CourseReportByEmployeeComponent {
     seo.set('Báo cáo');
     this.employees = _.get(route.snapshot.data, 'employees')
     this.cols = ['code', 'name', 'dob', 'facutly', 'major', 'course', 'start', 'end']
-    this.model = {}
+    this.model = { is_all_employee: true }
   }
   employees: Array<any>;
   entities: Array<any>;
   cols: Array<string>
   model: {
+    is_all_employee: boolean,
     employee_codes?: Array<string>,
     start?: string,
     end?: string
@@ -32,7 +33,6 @@ export class CourseReportByEmployeeComponent {
   @ViewChild('TABLE') table: ElementRef;
 
   fetch() {
-    console.log(this.model)
     this.api.post(`coursebyemployee`, this.model).then((response: Array<any>) => {
       this.entities = response
     }), () => {
@@ -44,8 +44,19 @@ export class CourseReportByEmployeeComponent {
     return _.get(model, key)
   }
 
+
+  onIsAllEmployeeChange($event) {
+    if ($event) {
+      this.model.employee_codes = undefined;
+    }
+  }
+
+  getLength() {
+    return _.size(this.entities);
+  }
+
   validate() {
-    if (Utils.isArrayEmpty(this.model.employee_codes)) {
+    if (!this.model.is_all_employee && Utils.isArrayEmpty(this.model.employee_codes)) {
       this.toastr.error('Nhân viên không được để trống')
       return false
     }

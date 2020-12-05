@@ -14,7 +14,7 @@ export class StaffUploadComponent {
   constructor(private ref: MatDialogRef<StaffUploadComponent>,
     @Inject(MAT_DIALOG_DATA) private bindings: any, private toastr: ToastrService, private api: EmployeeApi, private modal: ModalService) {
     this.uploader = new FileUploader({ itemAlias: 'file', allowedFileType: ['xlsx', 'xls'] })
-    this.url = '/assets/templates/employee.xlsx'
+    this.url = './assets/templates/employee.xlsx'
   }
 
 

@@ -5,6 +5,8 @@ import { CourseApi } from '../../apis';
 import { BaseTableComponent } from '../../../../shared/base-table.component';
 import { CourseActionComponent } from '../../dialogs';
 import * as _ from 'lodash';
+import { PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-course',
@@ -16,6 +18,56 @@ export class CourseComponent extends BaseTableComponent {
     super(injector, api, modal, toastr, route.snapshot.data['fetch']);
     seo.set('Khóa đào tạo');
   }
+
+
+  ngAfterViewInit() {
+    this.paginator.page.subscribe((page: PageEvent) => {
+      this.storage.resolve(this.router.url, page.pageSize)
+      this.fetch({
+        page: (page.pageIndex + 1),
+        quantity: page.pageSize,
+        query: this.query
+      })
+    })
+
+    this.sort.sortChange.subscribe(() => {
+      this.refresh()
+    })
+  }
+
+  refresh() {
+    this.fetch({
+      page: this.page,
+      quantity: this.quantity,
+      query: this.query
+    });
+  }
+
+  fetch(value: {
+    page: number,
+    quantity: number,
+    query: string
+  }) {
+    this.loading = true
+    this.api
+      .post('all-course', {
+        page: value.page,
+        quantity: value.quantity,
+        query: this.query
+      })
+      .then((response: FetchResult) => {
+        this.total = response.count;
+        this.models = new MatTableDataSource(response.models);
+        this.count = response.models.length;
+        this.page = value.page;
+        this.quantity = value.quantity;
+        // this.defparams = value.params;
+      }).then(() => {
+        this.loading = false
+      });
+  }
+
+
   init() {
     this.config = {
       size: '550px',
@@ -38,7 +90,11 @@ export class CourseComponent extends BaseTableComponent {
         title: 'Thông tin khóa đào tạo'
       }
     }
-    this.cols = ['code', 'name', 'start', 'end', 'status', 'action']
+    this.cols = ['code', 'name', 'start', 'end', 'course_time', 'status', 'action']
+  }
+
+  search(value: string) {
+    this.fetch({ page: this.page, quantity: this.quantity, query: value })
   }
 
   empty() {

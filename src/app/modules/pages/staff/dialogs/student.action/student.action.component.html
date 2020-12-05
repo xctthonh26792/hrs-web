@@ -5,10 +5,10 @@
   </h3>
   <mat-dialog-content fxLayout="column">
     <p-text name="code" [(ngModel)]="model.def_code" [disabled]="disabled" placeholder="Mã" fxFlex></p-text>
-    <p-text name="name" placeholder="Tên sinh viên" [(ngModel)]="model.name" [disabled]="disabled" required fxFlex>
+    <p-text name="name" placeholder="Tên học viên" [(ngModel)]="model.name" [disabled]="disabled" required fxFlex>
     </p-text>
     <p-select [(ngModel)]="model.center_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
-      placeholder="Trường" fxFlex [search]="true" label.search="Tìm kiếm trường" label.empty="không tìm thấy trường"
+      placeholder="Đơn vị" fxFlex [search]="true" label.search="Tìm kiếm đơn vị" label.empty="không tìm thấy đơn vị"
       required>
       <mat-option *ngFor="let center of centers" [value]="center.id" [attr.text]="center.value_to_search">
         {{ center.name }}</mat-option>

@@ -12,7 +12,7 @@ export const ROUTES = [
     permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
   },
   {
-    name: 'Sinh viên',
+    name: 'Học viên',
     link: '/student',
     icon: 'graduated',
     svg: true,
@@ -44,26 +44,38 @@ export const ROUTES = [
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
       },
       {
+        name: 'Thống kê số giờ đào tạo',
+        link: '/course-time',
+        icon: 'bar_chart',
+        permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
+      },
+      {
+        name: 'Thống kê khóa đào tạo',
+        link: '/course-report-by-course',
+        icon: 'bar_chart',
+        permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
+      },
+      {
         name: 'Thống kê khóa học của nhân viên',
         link: '/course-report-by-employee',
         icon: 'bar_chart',
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
       },
       {
-        name: 'Thống kê sinh viên thực tập',
+        name: 'Thống kê học viên thực tập',
         link: '/intership-report-by-student',
         icon: 'bar_chart',
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
       },
 
       {
-        name: 'Thống kê sinh viên thực tập theo trường',
+        name: 'Thống kê  thực tập theo đơn vị',
         link: '/intership-report-by-center',
         icon: 'bar_chart',
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
       },
       {
-        name: 'Thống kê sinh viên thực tập trong khoa',
+        name: 'Thống kê học viên thực tập trong khoa',
         link: '/intership-report-by-facutly',
         icon: 'bar_chart',
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
@@ -76,7 +88,7 @@ export const ROUTES = [
     permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.SYSTEM],
     links: [
       {
-        name: 'Trường',
+        name: 'Đơn vị',
         link: '/center',
         icon: 'center',
         svg: true,

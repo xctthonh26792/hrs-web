@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
 
-import { IntershipReportByStudentComponent, CourseReportByEmployeeComponent, IntershipReportByCenterComponent, IntershipReportByFacutlyComponent, CourseReportByFacutlyComponent } from './components'
+import { IntershipReportByStudentComponent, CourseReportByEmployeeComponent, IntershipReportByCenterComponent, IntershipReportByFacutlyComponent, CourseReportByFacutlyComponent, CourseTimeReportComponent, CourseByCourseComponent } from './components'
 import { } from './resolvers'
 import {
   CenterSelectizeResolve,
   FacutlySelectizeResolve,
   EmployeeSelectizeResolve,
-  StudentSelectizeResolve
+  StudentSelectizeResolve,
+  CourseSelectizeResolve
 } from '../../shared/resolvers'
 
 import { AUTH_ROLE, AuthGuard } from '../../../auths'
@@ -25,6 +26,15 @@ export const routes: Routes = [
     path: 'course-report-by-facutly',
     component: CourseReportByFacutlyComponent,
     resolve: { facutlies: FacutlySelectizeResolve },
+    canActivate: [AuthGuard],
+    data: {
+      permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
+    }
+  },
+  {
+    path: 'course-report-by-course',
+    component: CourseByCourseComponent,
+    resolve: { courses: CourseSelectizeResolve },
     canActivate: [AuthGuard],
     data: {
       permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
@@ -52,6 +62,15 @@ export const routes: Routes = [
   {
     path: 'intership-report-by-facutly',
     component: IntershipReportByFacutlyComponent,
+    resolve: { facutlies: FacutlySelectizeResolve },
+    canActivate: [AuthGuard],
+    data: {
+      permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
+    }
+  },
+  {
+    path: 'course-time',
+    component: CourseTimeReportComponent,
     resolve: { facutlies: FacutlySelectizeResolve },
     canActivate: [AuthGuard],
     data: {

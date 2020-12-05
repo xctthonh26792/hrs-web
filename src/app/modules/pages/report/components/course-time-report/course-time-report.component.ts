@@ -1,56 +1,59 @@
-import { Component, Injector, ViewChild, ElementRef } from '@angular/core';
+import { Component, Injector, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SeoService, ModalService, ToastrService } from '../../../../../services';
 import { ReportApi } from '../../../../../apis';
 import * as _ from 'lodash';
 import { Utils } from '../../../../../utils';
-import * as moment from 'moment'
 import * as XLSX from 'xlsx'
+import * as moment from 'moment'
+
 
 @Component({
-  selector: 'app-intership-report-by-facutly',
-  templateUrl: './intership-report-by-facutly.component.html',
-  styleUrls: ['./intership-report-by-facutly.component.scss']
+  selector: 'app-course-time-report',
+  templateUrl: './course-time-report.component.html',
+  styleUrls: ['./course-time-report.component.scss']
 })
-export class IntershipReportByFacutlyComponent {
+export class CourseTimeReportComponent {
 
   constructor(injector: Injector, seo: SeoService, route: ActivatedRoute, private api: ReportApi, private toastr: ToastrService) {
     seo.set('Báo cáo');
     this.facutlies = _.get(route.snapshot.data, 'facutlies')
-    this.cols = ['code', 'name', 'dob', 'center', 'facutly', 'major', 'class', 'start', 'end']
+    this.cols = ['code', 'name', 'dob', 'facutly', 'major', 'total_time']
     this.model = { is_all_facutly: true }
   }
   facutlies: Array<any>;
   entities: Array<any>;
   cols: Array<string>
-  code: string
   model: {
     is_all_facutly: boolean,
     facutly_codes?: Array<string>,
     start?: string,
     end?: string
   }
+
   @ViewChild('TABLE') table: ElementRef;
 
   fetch() {
-    if (!this.validate()) {
-      return;
-    }
-    this.api.post(`intershipbyfacutly`, this.model).then((response: Array<any>) => {
+    this.api.post(`coursetime`, this.model).then((response: Array<any>) => {
       this.entities = response
     }), () => {
       this.toastr.error('Có lỗi xảy ra trong quá trình truy xuất dữ liệu')
     }
   }
 
-  value(model: any, key: string) {
-    return _.get(model, key)
-  }
-
   onIsAllFacutlyChange($event) {
     if ($event) {
       this.model.facutly_codes = undefined;
     }
+  }
+
+  getTotalTime() {
+    var vals = _.map(this.entities, x => x.total_time !== undefined ? x.total_time : 0);
+    return _.reduce(vals, (acc, value) => acc + value, 0);
+  }
+
+  value(model: any, key: string) {
+    return _.get(model, key)
   }
 
   validate() {
@@ -77,26 +80,19 @@ export class IntershipReportByFacutlyComponent {
     return true
   }
 
-  getLength() {
-    return _.size(this.entities);
-  }
-
   exportexcel() {
-    let fileName = 'Thống kê học viên thực tập trong khoa'
+    let fileName = 'Thống kê số giờ đào tạo của nhân viên'
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement, { raw: true });
     ws["!cols"] = [
-      { width: 20 },
       { width: 15 },
       { width: 20 },
       { width: 15 },
       { width: 20 },
       { width: 20 },
-      { width: 15 },
-      { width: 15 }
+      { width: 20 }
     ]
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, `${fileName}.xlsx`);
   }
-
 }

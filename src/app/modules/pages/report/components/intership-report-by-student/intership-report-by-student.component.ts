@@ -26,7 +26,7 @@ export class IntershipReportByStudentComponent {
 
   fetch() {
     if (Utils.isStringEmpty(this.code)) {
-      this.toastr.error('Sinh viên không được để trống')
+      this.toastr.error('Học viên không được để trống')
       return
     }
     this.api.get(`intershipbystudent/${this.code}`).then((response: Array<any>) => {
@@ -40,8 +40,12 @@ export class IntershipReportByStudentComponent {
     return _.get(model, key)
   }
 
+  getLength() {
+    return _.size(this.entities);
+  }
+
   exportexcel() {
-    let fileName = 'Thống kê sinh viên thực tập'
+    let fileName = 'Thống kê học viên thực tập'
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement, { raw: true });
     ws["!cols"] = [
       { width: 15 },

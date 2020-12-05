@@ -14,28 +14,28 @@ import * as _ from 'lodash';
 export class CenterComponent extends BaseTableComponent {
   constructor(injector: Injector, seo: SeoService, route: ActivatedRoute, api: CenterApi, modal: ModalService, toastr: ToastrService) {
     super(injector, api, modal, toastr, route.snapshot.data['fetch']);
-    seo.set('Trường');
+    seo.set('Đơn vị');
   }
   init() {
     this.config = {
       size: '550px',
       dialog: CenterActionComponent,
       create: {
-        title: 'Thêm mới trường',
+        title: 'Thêm mới đơn vị',
         message: {
-          success: 'Thêm mới trường thành công',
-          error: 'Thêm mới trường không thành công'
+          success: 'Thêm mới đơn vị thành công',
+          error: 'Thêm mới đơn vị không thành công'
         }
       },
       update: {
-        title: 'Cập nhật trường',
+        title: 'Cập nhật đơn vị',
         message: {
-          success: 'Cập nhật trường thành công',
-          error: 'Cập nhật trường không thành công'
+          success: 'Cập nhật đơn vị thành công',
+          error: 'Cập nhật đơn vị không thành công'
         }
       },
       view: {
-        title: 'Thông tin trường'
+        title: 'Thông tin đơn vị'
       }
     }
     this.cols = ['code', 'name', 'status', 'action']

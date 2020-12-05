@@ -11,8 +11,8 @@
         {{ facutly.name }}</mat-option>
     </p-select>
     <p-select [(ngModel)]="model.student_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
-      placeholder="Sinh viên" fxFlex [search]="true" label.search="Tìm kiếm sinh viên"
-      label.empty="không tìm thấy sinh viên" required (ngModelChange)="studentChange($event)">
+      placeholder="Học viên" fxFlex [search]="true" label.search="Tìm kiếm học viên"
+      label.empty="không tìm thấy học viên" required (ngModelChange)="studentChange($event)">
       <mat-option *ngFor="let student of students" [value]="student.id" [attr.text]="student.value_to_search">
         {{ student.name }}
         ({{ student.course }})

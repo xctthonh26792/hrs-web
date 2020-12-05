@@ -17,7 +17,7 @@ export class IntershipUploadComponent {
   constructor(private ref: MatDialogRef<IntershipUploadComponent>,
     @Inject(MAT_DIALOG_DATA) private bindings: any, private toastr: ToastrService, private api: IntershipApi, private modal: ModalService) {
     this.uploader = new FileUploader({ itemAlias: 'file', allowedFileType: ['xlsx', 'xls'] })
-    this.url = '/assets/templates/intership.xlsx'
+    this.url = './assets/templates/intership.xlsx'
   }
 
 

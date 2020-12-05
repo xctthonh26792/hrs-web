@@ -19,6 +19,7 @@ export class DashboardComponent {
     total_student: number,
     total_employee: number,
     total_course: number,
-    total_intership: number
+    total_intership: number,
+    total_employee_interships: number
   }
 }

@@ -100,7 +100,6 @@ export class MatFileUploadComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(111)
     this.uploadProgressSubject.next({
       progressPercentage: 0,
       loaded: 0,

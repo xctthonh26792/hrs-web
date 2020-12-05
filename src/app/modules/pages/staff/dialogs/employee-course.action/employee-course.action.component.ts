@@ -77,6 +77,7 @@ export class EmployeeCourseActionComponent {
       this.model.end = course.end
       this.model.time_start = course.time_start
       this.model.time_end = course.time_end
+      this.model.course_time = course.course_time
     }
   }
 
@@ -86,7 +87,6 @@ export class EmployeeCourseActionComponent {
 
   employeeChange($event) {
     var employee = _.chain(this.employees).filter(x => x.id === $event).first().value()
-    console.log(employee)
     if (Utils.isNotNull(employee)) {
       this.model.facutly_code = employee.facutly_code
       this.model.major_code = employee.major_code

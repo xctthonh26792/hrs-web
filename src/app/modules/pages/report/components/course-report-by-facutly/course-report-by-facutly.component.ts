@@ -18,15 +18,17 @@ export class CourseReportByFacutlyComponent {
     seo.set('Báo cáo');
     this.facutlies = _.get(route.snapshot.data, 'facutlies')
     this.cols = ['code', 'name', 'dob', 'facutly', 'major', 'course', 'start', 'end']
-    this.model = {}
+    this.model = { is_all_facutly: true }
   }
   facutlies: Array<any>;
   entities: Array<any>;
   cols: Array<string>
   model: {
+    is_all_facutly?: boolean,
     facutly_codes?: Array<string>,
     start?: string,
-    end?: string
+    end?: string,
+
   }
 
   @ViewChild('TABLE') table: ElementRef;
@@ -44,8 +46,18 @@ export class CourseReportByFacutlyComponent {
     return _.get(model, key)
   }
 
+  onIsAllFacutlyChange($event) {
+    if ($event) {
+      this.model.facutly_codes = undefined;
+    }
+  }
+
+  getLength() {
+    return _.size(this.entities);
+  }
+
   validate() {
-    if (Utils.isArrayEmpty(this.model.facutly_codes)) {
+    if (this.model.is_all_facutly === false && Utils.isArrayEmpty(this.model.facutly_codes)) {
       this.toastr.error('Khoa không được để trống')
       return false
     }

@@ -13,7 +13,7 @@ import * as _ from 'lodash';
 export class StudentComponent extends BaseTableComponent {
   constructor(injector: Injector, seo: SeoService, route: ActivatedRoute, api: StudentApi, modal: ModalService, toastr: ToastrService, private cApi: CenterApi) {
     super(injector, api, modal, toastr, route.snapshot.data['fetch']);
-    seo.set('Sinh viên');
+    seo.set('Học viên');
     this.data = _.get(route.snapshot.data, 'data')
   }
   data: any;
@@ -29,11 +29,11 @@ export class StudentComponent extends BaseTableComponent {
     this._lock = true;
     var instance = await this.modal.show(StudentActionComponent, {
       model: this.empty(),
-      title: 'Thêm mới sinh viên',
+      title: 'Thêm mới học viên',
       data: this.data,
       message: {
-        success: 'Thêm mới sinh viên thành công',
-        error: 'Thêm mới sinh viên không thành công'
+        success: 'Thêm mới học viên thành công',
+        error: 'Thêm mới học viên không thành công'
       },
       disabled: false
     }, { width: '900px' })
@@ -52,11 +52,11 @@ export class StudentComponent extends BaseTableComponent {
     this._lock = true;
     var instance = await this.modal.show(StudentActionComponent, {
       model: model,
-      title: 'Cập nhật sinh viên',
+      title: 'Cập nhật học viên',
       data: this.data,
       message: {
-        success: 'Cập nhật sinh viên thành công',
-        error: 'Cập nhật sinh viên không thành công'
+        success: 'Cập nhật học viên thành công',
+        error: 'Cập nhật học viên không thành công'
       },
       disabled: false
     }, { width: '900px' })
@@ -75,8 +75,8 @@ export class StudentComponent extends BaseTableComponent {
     this._lock = true;
     var instance = await this.modal.show(StudentUploadComponent, {
       message: {
-        success: 'Tải lên file thông tin sinh viên thành công',
-        error: 'Tải lên file thông tin sinh viên không thành công'
+        success: 'Tải lên file thông tin học viên thành công',
+        error: 'Tải lên file thông tin học viên không thành công'
       },
     }, { width: '1024px' })
     instance.subscribe((reload) => {
@@ -95,7 +95,7 @@ export class StudentComponent extends BaseTableComponent {
     var instance = await this.modal.show(StudentActionComponent, {
       model: model,
       data: this.data,
-      title: 'Thông tin sinh viên',
+      title: 'Thông tin học viên',
       disabled: true
     }, { width: '900px' })
     instance.subscribe((reload) => {

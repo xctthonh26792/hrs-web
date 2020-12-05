@@ -18,13 +18,14 @@ export class IntershipReportByCenterComponent {
     seo.set('Báo cáo');
     this.centers = _.get(route.snapshot.data, 'centers')
     this.cols = ['code', 'name', 'dob', 'center', 'facutly', 'major', 'class', 'start', 'end']
-    this.model = {}
+    this.model = { is_all_center: true }
   }
   centers: Array<any>;
   entities: Array<any>;
   cols: Array<string>
   code: string
   model: {
+    is_all_center: boolean,
     center_codes?: Array<string>,
     start?: string,
     end?: string
@@ -46,9 +47,19 @@ export class IntershipReportByCenterComponent {
     return _.get(model, key)
   }
 
+  onIsAllCenterChange($event) {
+    if ($event) {
+      this.model.center_codes = undefined;
+    }
+  }
+
+  getLength() {
+    return _.size(this.entities);
+  }
+
   validate() {
-    if (Utils.isArrayEmpty(this.model.center_codes)) {
-      this.toastr.error('Trường không được để trống')
+    if (!this.model.is_all_center && Utils.isArrayEmpty(this.model.center_codes)) {
+      this.toastr.error('Đơn vị không được để trống')
       return false
     }
     if (Utils.isStringEmpty(this.model.start)) {
@@ -70,7 +81,7 @@ export class IntershipReportByCenterComponent {
     return true
   }
   exportexcel() {
-    let fileName = 'Thống kê sinh viên thực tập theo trường'
+    let fileName = 'Thống kê  thực tập theo đơn vị'
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement, { raw: true });
     ws["!cols"] = [
       { width: 15 },
