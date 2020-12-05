@@ -13,6 +13,7 @@ import { DIRECTIVES } from './directives'
 import { RESOLVERS } from './resolvers';
 import { PipesModule } from '../../pipes';
 import { NgxSummernoteModule } from '../../plugins/ngx-summernote';
+import { APIS } from '../pages/setting/apis'
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { NgxSummernoteModule } from '../../plugins/ngx-summernote';
   ],
   providers: [
     // ...MATERIAL_PROVIDERS,
+    ...APIS,
     ...RESOLVERS,
   ],
   declarations: [
