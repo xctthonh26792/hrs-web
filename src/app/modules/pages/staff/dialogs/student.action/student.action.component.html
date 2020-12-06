@@ -21,8 +21,11 @@
       <mat-option *ngFor="let major of majors" [value]="major.id" [attr.text]="major.value_to_search">
         {{ major.name }}</mat-option>
     </p-select>
-    <p-text name="class" placeholder="Lớp" [(ngModel)]="model.class" [disabled]="disabled" fxFlex>
-    </p-text>
+    <p-select [(ngModel)]="model.classroom_code" [ngModelOptions]="{standalone: true}" [disabled]="disabled"
+      placeholder="Lớp" fxFlex [search]="true" label.search="Tìm kiếm lớp" label.empty="không tìm thấy lớp" required>
+      <mat-option *ngFor="let classroom of classrooms" [value]="classroom.id" [attr.text]="classroom.value_to_search">
+        {{ classroom.name }}</mat-option>
+    </p-select>
     <p-date name="dob" placeholder="Ngày sinh (DD/MM/YYYY)" [(ngModel)]="model.date_of_birth" [disabled]="disabled"
       fxFlex></p-date>
     <p-email name="email" placeholder="Email" [(ngModel)]="model.email" [disabled]="disabled" fxFlex></p-email>

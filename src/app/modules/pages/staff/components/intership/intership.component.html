@@ -18,20 +18,20 @@
   <div class="tenjin-container">
     <table mat-table [dataSource]="models" class="tenjin-table" matSort>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tên học viên </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header> Tên học viên </th>
         <td mat-cell *matCellDef="let element"> {{value(element, 'student.name')}} </td>
       </ng-container>
       <ng-container matColumnDef="code">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mã </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header mat-sort-header> Mã </th>
         <td mat-cell *matCellDef="let element"> {{value(element, 'def_code')}} </td>
       </ng-container>
       <ng-container matColumnDef="major">
-        <th mat-header-cell *matHeaderCellDef> Chuyên ngành </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Chuyên ngành </th>
         <td mat-cell *matCellDef="let element"> {{value(element, 'major.name')}} </td>
       </ng-container>
       <ng-container matColumnDef="class">
-        <th mat-header-cell *matHeaderCellDef>Lớp</th>
-        <td mat-cell *matCellDef="let element"> {{value(element, 'class')}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Lớp</th>
+        <td mat-cell *matCellDef="let element"> {{value(element, 'classroom.name')}} </td>
       </ng-container>
       <ng-container matColumnDef="dob">
         <th mat-header-cell *matHeaderCellDef> Ngày sinh</th>
@@ -41,13 +41,13 @@
       </ng-container>
 
       <ng-container matColumnDef="start">
-        <th mat-header-cell *matHeaderCellDef> Ngày bắt đầu </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày bắt đầu </th>
         <td mat-cell *matCellDef="let element">
           <span>{{value(element, 'start') | date: 'dd/MM/yyyy'}}</span>
         </td>
       </ng-container>
       <ng-container matColumnDef="end">
-        <th mat-header-cell *matHeaderCellDef> Ngày kết thúc </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ngày kết thúc </th>
         <td mat-cell *matCellDef="let element">
           <span>{{value(element, 'end') | date: 'dd/MM/yyyy'}}</span>
         </td>

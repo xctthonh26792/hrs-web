@@ -1,35 +1,30 @@
 import { Component, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from '../../../../../services';
-import { StudentApi } from '../../../../../apis';
+import { ClassroomApi } from '../../apis';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Utils } from '../../../../../utils';
 import * as _ from 'lodash';
-
+import { Utils } from '../../../../../utils';
 
 @Component({
-  selector: 'app-student.action',
-  templateUrl: './student.action.component.html',
-  styleUrls: ['./student.action.component.scss']
+  selector: 'app-classroom.action',
+  templateUrl: './classroom.action.component.html',
+  styleUrls: ['./classroom.action.component.scss'],
+  providers: [ClassroomApi]
 })
-export class StudentActionComponent {
+export class ClassroomActionComponent {
 
-  constructor(private ref: MatDialogRef<StudentActionComponent>,
-    @Inject(MAT_DIALOG_DATA) private bindings: any, private toastr: ToastrService, private api: StudentApi) {
-    this.model = _.get(bindings, 'model');
+  constructor(private ref: MatDialogRef<ClassroomActionComponent>,
+    @Inject(MAT_DIALOG_DATA) private bindings: any, private toastr: ToastrService, private api: ClassroomApi) {
+    this.model = _.get(bindings, 'data');
     this.title = _.get(bindings, 'title');
     this.disabled = _.get(bindings, 'disabled');
-    this.centers = _.get(bindings, 'data.centers')
-    this.majors = _.get(bindings, 'data.majors')
-    this.classrooms = _.get(bindings, 'data.classrooms');
   }
+
   title: string;
   model: any;
   disabled: boolean;
   loading: boolean
-  centers: Array<any>
-  majors: Array<any>;
-  classrooms: Array<any>;
 
   accept(form: NgForm) {
     if (form.invalid) { return; }
@@ -73,4 +68,5 @@ export class StudentActionComponent {
   cancel() {
     this.ref.close(false)
   }
+
 }

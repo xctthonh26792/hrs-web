@@ -80,6 +80,12 @@ export const ROUTES = [
         icon: 'bar_chart',
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
       },
+      {
+        name: 'Thống kê học viên thực tập theo lớp',
+        link: '/intership-report-by-classroom',
+        icon: 'bar_chart',
+        permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.STAFF, AUTH_ROLE.SYSTEM]
+      },
     ]
   },
   {
@@ -118,6 +124,12 @@ export const ROUTES = [
         name: 'Khóa đào tạo',
         link: '/course',
         icon: 'access_time',
+        permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.SYSTEM]
+      },
+      {
+        name: 'Lớp',
+        link: '/classroom',
+        icon: 'class',
         permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.SYSTEM]
       }
     ]

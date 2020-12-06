@@ -3,7 +3,8 @@ import {
   FacutlySelectizeResolve,
   EmployeeSelectizeResolve,
   StudentSelectizeResolve,
-  CourseSelectizeResolve
+  CourseSelectizeResolve,
+  ClassroomSelectizeResolve
 } from './data.resolver'
 
 export {
@@ -11,7 +12,8 @@ export {
   FacutlySelectizeResolve,
   EmployeeSelectizeResolve,
   StudentSelectizeResolve,
-  CourseSelectizeResolve
+  CourseSelectizeResolve,
+  ClassroomSelectizeResolve
 } from './data.resolver'
 
 export const RESOLVERS = [
@@ -19,5 +21,6 @@ export const RESOLVERS = [
   FacutlySelectizeResolve,
   EmployeeSelectizeResolve,
   StudentSelectizeResolve,
-  CourseSelectizeResolve
+  CourseSelectizeResolve,
+  ClassroomSelectizeResolve
 ];

@@ -92,7 +92,8 @@ export class IntershipAcitonComponent {
     var student = _.chain(this.students).filter(x => x.id === $event).first().value()
     if (Utils.isNotNull(student)) {
       this.model.center_code = student.center_code
-      this.model.class = student.class
+      // this.model.class = student.class
+      this.model.classroom_code = student.classroom_code
       this.model.major_code = student.major_code
       this.model.course = student.course
     }

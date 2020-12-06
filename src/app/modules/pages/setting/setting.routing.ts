@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { FacutlyComponent, CenterComponent, MajorComponent, LevelComponent, CourseComponent } from './components'
-import { FacutlyResolve, CenterResolve, MajorResolve, LevelResolve, CourseResolve } from './resolvers'
+import { FacutlyComponent, CenterComponent, MajorComponent, LevelComponent, CourseComponent, ClassroomComponent } from './components'
+import { FacutlyResolve, CenterResolve, MajorResolve, LevelResolve, CourseResolve, ClassroomResolve } from './resolvers'
 import { AuthGuard, AUTH_ROLE } from '../../../auths'
 
 
@@ -46,6 +46,15 @@ export const routes: Routes = [
     path: 'course',
     component: CourseComponent,
     resolve: { fetch: CourseResolve },
+    canActivate: [AuthGuard],
+    data: {
+      permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.SYSTEM]
+    }
+  },
+  {
+    path: 'classroom',
+    component: ClassroomComponent,
+    resolve: { fetch: ClassroomResolve },
     canActivate: [AuthGuard],
     data: {
       permissions: [AUTH_ROLE.ADMINISTRATOR, AUTH_ROLE.SYSTEM]
